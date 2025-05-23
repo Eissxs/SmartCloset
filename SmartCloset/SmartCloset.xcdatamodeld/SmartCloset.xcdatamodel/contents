@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="24C5029f" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CalendarSlot" representedClassName="CalendarSlot" syncable="YES" codeGenerationType="class">
+        <attribute name="date_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="notes_" optional="YES" attributeType="String"/>
+        <attribute name="occasion_" optional="YES" attributeType="String"/>
+        <relationship name="plannedItems_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ClosetItem" inverseName="plannedOutfits_" inverseEntity="ClosetItem"/>
+    </entity>
+    <entity name="ClosetItem" representedClassName="ClosetItem" syncable="YES" codeGenerationType="class">
+        <attribute name="category_" optional="YES" attributeType="String"/>
+        <attribute name="color_" optional="YES" attributeType="String"/>
+        <attribute name="dateAdded_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="favorite_" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageData_" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="lastWornDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timesWorn_" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="outfitEntries_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OutfitEntry" inverseName="items_" inverseEntity="OutfitEntry"/>
+        <relationship name="plannedOutfits_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CalendarSlot" inverseName="plannedItems_" inverseEntity="CalendarSlot"/>
+    </entity>
+    <entity name="OutfitEntry" representedClassName="OutfitEntry" syncable="YES" codeGenerationType="class">
+        <attribute name="date_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageData_" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="mood_" optional="YES" attributeType="String"/>
+        <attribute name="notes_" optional="YES" attributeType="String"/>
+        <relationship name="items_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ClosetItem" inverseName="outfitEntries_" inverseEntity="ClosetItem"/>
+    </entity>
+</model> 
